@@ -3,7 +3,8 @@ import {
   pgTable,
   text,
   primaryKey,
- integer
+ integer,
+ serial
 } from "drizzle-orm/pg-core"
 import type { AdapterAccount } from '@auth/core/adapters'
 
@@ -61,3 +62,10 @@ export const verificationTokens = pgTable(
    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
  })
 )
+
+
+// test schema to run db
+export const course = pgTable("courses", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull()
+})
